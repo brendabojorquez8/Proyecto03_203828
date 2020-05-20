@@ -83,6 +83,18 @@ public class DAOUsers extends DAOBase<User> {
 
         return findUsers;
     }
+    
+    public User findByEmail(String email) {
+        List<User> findUsers = find();
+
+        for (User user : users.find()) {
+            if(user.getEmail().equals(email)){
+                return user;
+            }
+        }
+
+        return null;
+    }
 
     @Override
     public User findById(ObjectId id) {

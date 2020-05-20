@@ -34,11 +34,13 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlLogIn = new javax.swing.JPanel();
-        entrarBtn = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         lblPassword = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lb_email = new javax.swing.JLabel();
+        lb_pss = new javax.swing.JLabel();
         pnlRegistro = new javax.swing.JPanel();
         lblRegistrar = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -75,8 +77,13 @@ public class Inicio extends javax.swing.JFrame {
 
         pnlLogIn.setBackground(new java.awt.Color(64, 103, 127));
 
-        entrarBtn.setBackground(new java.awt.Color(178, 178, 255));
-        entrarBtn.setText("Entrar");
+        btnEntrar.setBackground(new java.awt.Color(178, 178, 255));
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         lblPassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,6 +93,12 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Email");
 
+        lb_email.setForeground(new java.awt.Color(64, 103, 127));
+        lb_email.setText("jLabel3");
+
+        lb_pss.setForeground(new java.awt.Color(64, 103, 127));
+        lb_pss.setText("jLabel4");
+
         javax.swing.GroupLayout pnlLogInLayout = new javax.swing.GroupLayout(pnlLogIn);
         pnlLogIn.setLayout(pnlLogInLayout);
         pnlLogInLayout.setHorizontalGroup(
@@ -94,13 +107,17 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_pss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(entrarBtn)
+                .addComponent(btnEntrar)
                 .addGap(26, 26, 26))
         );
         pnlLogInLayout.setVerticalGroup(
@@ -112,8 +129,12 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrarBtn))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(btnEntrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_email)
+                    .addComponent(lb_pss))
+                .addContainerGap())
         );
 
         pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
@@ -301,7 +322,7 @@ public class Inicio extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,7 +342,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(pnlLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addComponent(pnlRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
@@ -351,6 +372,22 @@ public class Inicio extends javax.swing.JFrame {
             limpiarCampos();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        User us = controlUsuario.findByEmail(txtEmail.getText());
+        if (us != null) {
+            if (us.getPassword().equals(txtPassword)) {
+                //Abrir pantalla
+                //this.dispose();
+            } else {
+                lb_pss.setText("Contraseña incorrecta");
+                lb_pss.setForeground(Color.yellow);
+            }
+        } else {
+            lb_email.setText("Correo no registrado");
+            lb_email.setForeground(Color.yellow);
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void eliminarTodo() {
         List<User> users = controlUsuario.find();
@@ -480,18 +517,20 @@ public class Inicio extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnRegistrar;
     private com.toedter.calendar.JDateChooser chsDOB;
     private javax.swing.JComboBox<Gender> cmbGender;
-    private javax.swing.JButton entrarBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lb_DOB;
     private javax.swing.JLabel lb_confirm;
     private javax.swing.JLabel lb_correo;
+    private javax.swing.JLabel lb_email;
     private javax.swing.JLabel lb_nombre;
     private javax.swing.JLabel lb_password;
+    private javax.swing.JLabel lb_pss;
     private javax.swing.JLabel lblConfirm;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblEmailRegister;

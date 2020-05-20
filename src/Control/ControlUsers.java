@@ -32,6 +32,10 @@ public class ControlUsers implements ControlBase<User> {
     public User findById(ObjectId id) {
         return this.user.findById(id);
     }
+    
+    public User findByEmail(String email){
+        return this.user.findByEmail(email);
+    }
 
     @Override
     public boolean update(User user) {
