@@ -4,6 +4,8 @@ import Control.ControlUsers;
 import Entities.User;
 import Enums.*;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,6 +24,14 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.controlUsuario = new ControlUsers();
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Images/Logo2.png"));
+
+        return retValue;
     }
 
     /**
@@ -71,6 +81,7 @@ public class Inicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("¡Bienvenido!");
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(getIconImage());
         setMaximumSize(new java.awt.Dimension(1125, 630));
         setMinimumSize(new java.awt.Dimension(1125, 630));
         setPreferredSize(new java.awt.Dimension(1125, 630));
@@ -143,16 +154,39 @@ public class Inicio extends javax.swing.JFrame {
         lblRegistrar.setForeground(new java.awt.Color(0, 0, 102));
         lblRegistrar.setText("¿No tienes cuenta? ¡Regístrate, es gratis!");
 
+        txtName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNameMouseClicked(evt);
+            }
+        });
+
         lblName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblName.setText("Nombre");
 
+        txtEmailRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmailRegisterMouseClicked(evt);
+            }
+        });
+
         lblEmailRegister.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEmailRegister.setText("Email");
+
+        txtPasswordRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordRegisterMouseClicked(evt);
+            }
+        });
 
         lblPasswordRegister.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPasswordRegister.setText("Password");
 
         chsDOB.setBackground(new java.awt.Color(255, 255, 255));
+        chsDOB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chsDOBMouseClicked(evt);
+            }
+        });
 
         lblDOB.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDOB.setText("Fecha de Nacimiento");
@@ -190,6 +224,12 @@ public class Inicio extends javax.swing.JFrame {
 
         lblConfirm.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblConfirm.setText("Confirmar Password");
+
+        txtConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtConfirmMouseClicked(evt);
+            }
+        });
 
         lb_confirm.setForeground(new java.awt.Color(255, 255, 255));
         lb_confirm.setText("a");
@@ -374,11 +414,13 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        eliminarTodo();
         User us = controlUsuario.findByEmail(txtEmail.getText());
         if (us != null) {
-            if (us.getPassword().equals(txtPassword)) {
+            if (us.getPassword().equals(txtPassword.getText())) {
                 //Abrir pantalla
                 //this.dispose();
+                JOptionPane.showMessageDialog(null,"Esto es otra pantalla c:");
             } else {
                 lb_pss.setText("Contraseña incorrecta");
                 lb_pss.setForeground(Color.yellow);
@@ -389,11 +431,31 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
+    private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
+        labelWhite();
+    }//GEN-LAST:event_txtNameMouseClicked
+
+    private void chsDOBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chsDOBMouseClicked
+        labelWhite();
+    }//GEN-LAST:event_chsDOBMouseClicked
+
+    private void txtEmailRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailRegisterMouseClicked
+        labelWhite();
+    }//GEN-LAST:event_txtEmailRegisterMouseClicked
+
+    private void txtPasswordRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordRegisterMouseClicked
+        labelWhite();
+    }//GEN-LAST:event_txtPasswordRegisterMouseClicked
+
+    private void txtConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmMouseClicked
+        labelWhite();
+    }//GEN-LAST:event_txtConfirmMouseClicked
+
     private void eliminarTodo() {
         List<User> users = controlUsuario.find();
         for (User user : users) {
-            System.out.println(user.getName() + " " + user.getEmail());
-//            controlUsuario.remove(user);
+            System.out.println(user);
+            controlUsuario.remove(user);
         }
     }
 
@@ -402,6 +464,10 @@ public class Inicio extends javax.swing.JFrame {
         txtConfirm.setText("");
         txtEmailRegister.setText("");
         txtPasswordRegister.setText("");
+        labelWhite();
+    }
+    
+    private void labelWhite(){
         lb_DOB.setForeground(Color.WHITE);
         lb_confirm.setForeground(Color.WHITE);
         lb_correo.setForeground(Color.WHITE);
@@ -437,17 +503,13 @@ public class Inicio extends javax.swing.JFrame {
             lb_password.setText("Ingrese contraseña");
             lb_password.setForeground(Color.RED);
             validate = false;
-        } else if (Arrays.toString(txtPasswordRegister.getPassword()).length() < 8) {
-            lb_password.setText("La contraseña es muy corta");
-            lb_password.setForeground(Color.RED);
-            validate = false;
         }
 
         if (txtConfirm.getText().isEmpty()) {
             lb_confirm.setText("Repita contraseña");
             lb_confirm.setForeground(Color.RED);
             validate = false;
-        } else if (!txtPasswordRegister.getText().equals(txtConfirm)) {
+        } else if (!txtPasswordRegister.getText().equals(txtConfirm.getText())) {
             lb_confirm.setText("Las contraseñas no coinciden");
             lb_confirm.setForeground(Color.RED);
             validate = false;
