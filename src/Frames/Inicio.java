@@ -61,15 +61,17 @@ public class Inicio extends javax.swing.JFrame {
         lblConfirm = new javax.swing.JLabel();
         txtConfirm = new javax.swing.JPasswordField();
         lb_confirm = new javax.swing.JLabel();
+        lb_nombre = new javax.swing.JLabel();
+        lb_DOB = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("¡Bienvenido!");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1066, 580));
-        setMinimumSize(new java.awt.Dimension(1066, 510));
-        setResizable(false);
+        setMaximumSize(new java.awt.Dimension(1125, 630));
+        setMinimumSize(new java.awt.Dimension(1125, 630));
+        setPreferredSize(new java.awt.Dimension(1125, 630));
 
         pnlLogIn.setBackground(new java.awt.Color(64, 103, 127));
 
@@ -159,10 +161,24 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        lb_correo.setForeground(new java.awt.Color(255, 255, 255));
+        lb_correo.setText("a");
+
+        lb_password.setForeground(new java.awt.Color(255, 255, 255));
+        lb_password.setText("a");
+
         lblConfirm.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblConfirm.setText("Confirmar Password");
 
+        lb_confirm.setForeground(new java.awt.Color(255, 255, 255));
+        lb_confirm.setText("a");
         lb_confirm.setToolTipText("");
+
+        lb_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        lb_nombre.setText("a");
+
+        lb_DOB.setForeground(new java.awt.Color(255, 255, 255));
+        lb_DOB.setText("a");
 
         javax.swing.GroupLayout pnlRegistroLayout = new javax.swing.GroupLayout(pnlRegistro);
         pnlRegistro.setLayout(pnlRegistroLayout);
@@ -173,7 +189,6 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRegistrar)
                     .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(pnlRegistroLayout.createSequentialGroup()
                             .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pnlRegistroLayout.createSequentialGroup()
@@ -185,12 +200,16 @@ public class Inicio extends javax.swing.JFrame {
                             .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(pnlRegistroLayout.createSequentialGroup()
                                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                                     .addComponent(lblEmailRegister))
                                 .addGroup(pnlRegistroLayout.createSequentialGroup()
                                     .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(chsDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlRegistroLayout.createSequentialGroup()
+                                            .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(lb_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chsDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lb_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblPasswordRegister, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -206,7 +225,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(pnlRegistroLayout.createSequentialGroup()
                             .addComponent(pnlMovies, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(pnlMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pnlMusic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         pnlRegistroLayout.setVerticalGroup(
@@ -222,15 +243,6 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(txtEmailRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chsDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDOB))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGender)))
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lb_correo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -242,14 +254,27 @@ public class Inicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblConfirm))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb_confirm)
-                .addGap(18, 18, 18)
+                            .addComponent(lblConfirm))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_confirm))
+                    .addGroup(pnlRegistroLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_nombre)
+                        .addGap(1, 1, 1)
+                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(chsDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDOB))
+                        .addGap(4, 4, 4)
+                        .addComponent(lb_DOB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblGender)
+                            .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(11, 11, 11)
                 .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlMovies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(pnlMovies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegistrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -260,9 +285,9 @@ public class Inicio extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(400, 456));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Wink2.gif"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(400, 465));
-        jLabel2.setMinimumSize(new java.awt.Dimension(400, 465));
-        jLabel2.setPreferredSize(new java.awt.Dimension(400, 465));
+        jLabel2.setMaximumSize(new java.awt.Dimension(400, 580));
+        jLabel2.setMinimumSize(new java.awt.Dimension(400, 580));
+        jLabel2.setPreferredSize(new java.awt.Dimension(400, 580));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -274,7 +299,9 @@ public class Inicio extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,7 +321,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(pnlLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                     .addComponent(pnlRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
@@ -304,95 +331,118 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-//        List<User> usuarios = controlUsuario.find();
-//        if(usuarios.isEmpty()){
-//            usuarios.add(new User());
-//        }
-//        for (User usuario : usuarios) {
-//            if (usuario.getEmail().equals(txtEmail.getText())) {
-//                lb_correo.setText("Correo ya registrado");
-//                lb_correo.setForeground(Color.RED);
-//            } else 
-        if (!validarEmail()) {
-            //mostrar un mensaje en la casilla (field) error
-            lb_correo.setText("Correo inválido");
-            lb_correo.setForeground(Color.RED);
-        }
-
-        if (!txtPassword.getText().equals(txtConfirm)) {
-            lb_confirm.setText("Las contraseñas no coinciden");
-            lb_confirm.setForeground(Color.RED);
-        }
-
-        if (validarPassword()) {
-            lb_password.setText("La contraseña es muy corta");
-            lb_password.setForeground(Color.RED);
-        }
         if (validarCampos()) {
-            this.registrarUsuario();
-            return;
+            User user = new User();
+            user.setEmail(txtEmailRegister.getText());
+            user.setPassword(txtPasswordRegister.getText());
+            user.setDateOfBirth(chsDOB.getDate());
+            user.setName(txtName.getText());
+            user.setGender((Gender) cmbGender.getSelectedItem());
+            user.setMovieGenres(lstMovies.getSelectedValuesList());
+            user.setMusicalGenres(lstMusic.getSelectedValuesList());
+
+            if (this.controlUsuario.insert(user)) {
+                JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo registrar al usuario", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+            
+            limpiarCampos();
         }
-//            }
-
-
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void registrarUsuario() {
-        User user = new User();
-        user.setEmail(txtEmail.getText());
-        user.setPassword(txtPassword.getText());
-        user.setDateOfBirth(chsDOB.getDate());
-        user.setName(txtName.getText());
-        user.setGender((Gender) cmbGender.getSelectedItem());
-        user.setMovieGenres(lstMovies.getSelectedValuesList());
-        user.setMusicalGenres(lstMusic.getSelectedValuesList());
-
-        if (this.controlUsuario.insert(user)) {
-            JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se pudo registrar al usuario", "Error", JOptionPane.ERROR_MESSAGE);
-
+    private void eliminarTodo() {
+        List<User> users = controlUsuario.find();
+        for (User user : users) {
+            System.out.println(user.getName() + " " + user.getEmail());
+//            controlUsuario.remove(user);
         }
-
     }
 
-    private boolean validarEmail() {
-        Pattern pattern = Pattern.compile("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))+");
-
-        Matcher matcher = pattern.matcher(txtEmail.getText());
-
-        List<User> usuarios = controlUsuario.find();
-        if (usuarios.isEmpty()) {
-            usuarios.add(new User());
-            for (User usuario : usuarios) {
-                lb_correo.setText("Correo ya registrado");
-                lb_correo.setForeground(Color.RED);
-            }
-        }
-
-        return matcher.find();
+    private void limpiarCampos() {
+        txtName.setText("");
+        txtConfirm.setText("");
+        txtEmailRegister.setText("");
+        txtPasswordRegister.setText("");
+        lb_DOB.setForeground(Color.WHITE);
+        lb_confirm.setForeground(Color.WHITE);
+        lb_correo.setForeground(Color.WHITE);
+        lb_nombre.setForeground(Color.WHITE);
+        lb_password.setForeground(Color.WHITE);
     }
 
     private boolean validarCampos() {
-        if (txtEmail.getText().isEmpty()
-                && txtName.getText().isEmpty()
-                && chsDOB.getCalendar().toString().isEmpty()
-                && txtPassword.getText().isEmpty()
-                && txtConfirm.getText().isEmpty()
-                && String.valueOf(cmbGender.getSelectedItem()).isEmpty()
+        boolean validate = true;
+        if (txtName.getText().isEmpty()) {
+            lb_nombre.setText("Ingrese el nombre");
+            lb_nombre.setForeground(Color.RED);
+            validate = false;
+        }
+
+        if (txtEmailRegister.getText().isEmpty()) {
+            lb_correo.setText("Ingrese correo");
+            lb_correo.setForeground(Color.RED);
+            validate = false;
+        } else if (!checkEmail()) {
+            lb_correo.setText("El correo no es válido");
+            lb_correo.setForeground(Color.RED);
+            validate = false;
+        }
+
+        if (chsDOB.getCalendar() == null) {
+            lb_DOB.setText("Ingrese la fecha de nacimiento");
+            lb_DOB.setForeground(Color.RED);
+            validate = false;
+        }
+
+        if (txtPasswordRegister.getText().isEmpty()) {
+            lb_password.setText("Ingrese contraseña");
+            lb_password.setForeground(Color.RED);
+            validate = false;
+        } else if (Arrays.toString(txtPasswordRegister.getPassword()).length() < 8) {
+            lb_password.setText("La contraseña es muy corta");
+            lb_password.setForeground(Color.RED);
+            validate = false;
+        }
+
+        if (txtConfirm.getText().isEmpty()) {
+            lb_confirm.setText("Repita contraseña");
+            lb_confirm.setForeground(Color.RED);
+            validate = false;
+        } else if (!txtPasswordRegister.getText().equals(txtConfirm)) {
+            lb_confirm.setText("Las contraseñas no coinciden");
+            lb_confirm.setForeground(Color.RED);
+            validate = false;
+        }
+        if (String.valueOf(cmbGender.getSelectedItem()).isEmpty()
                 && String.valueOf(lstMovies.getSelectedValue()).isEmpty()
                 && String.valueOf(lstMusic.getSelectedValue()).isEmpty()) {
-
+            validate = false;
         }
 
-        return true;
+        return validate;
     }
 
-    private boolean validarPassword() {
-        if (Arrays.toString(txtPassword.getPassword()).length() >= 8) {
-            return true;
+    private boolean checkEmail() {
+        List<User> usuarios = controlUsuario.find();
+        if (usuarios.isEmpty()) {
+            usuarios.add(new User());
         }
-        return true;
+        for (User usuario : usuarios) {
+            if (txtEmailRegister.equals(usuario.getEmail())) {
+                lb_correo.setText("Correo ya registrado");
+                lb_correo.setForeground(Color.RED);
+                return false;
+            }
+        }
+
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(txtEmailRegister.getText());
+
+        return mather.find();
     }
 
     /**
@@ -437,8 +487,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lb_DOB;
     private javax.swing.JLabel lb_confirm;
     private javax.swing.JLabel lb_correo;
+    private javax.swing.JLabel lb_nombre;
     private javax.swing.JLabel lb_password;
     private javax.swing.JLabel lblConfirm;
     private javax.swing.JLabel lblDOB;
