@@ -278,6 +278,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPostActionPerformed
 
     private void btnComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentarActionPerformed
+        
+        
         Post post=lstPosts.getSelectedValue();
         Comment com=new Comment(new ObjectId(), txtComment.getText(), new Date(), user.getId());
         post.addComment(com);
@@ -314,7 +316,6 @@ public class Principal extends javax.swing.JFrame {
     private Post[] cargarPosts(){
         List<Post> posts=controlPost.find();
         Post[] array=new Post[posts.size()];
-        String p=null;
         int i=0;
         for (Post post : posts) {
             array[i]=post;

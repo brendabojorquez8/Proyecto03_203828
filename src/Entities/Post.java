@@ -66,7 +66,7 @@ public class Post extends EntityBase {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
-    
+
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }
@@ -81,8 +81,7 @@ public class Post extends EntityBase {
 
     @Override
     public String toString() {
-        ControlUsers us=new ControlUsers();
-        return us.findById(user).getName() + "\n " + text+"\n comentarios: "+comments.size();
+        return "Post{" + "dateHour=" + dateHour + ", text=" + text + ", tags=" + tags + ", comments=" + comments + ", user=" + user + '}';
     }
 
 }
