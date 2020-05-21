@@ -1,6 +1,7 @@
 package DAO;
 
 import Entities.Comment;
+import Entities.Post;
 import Entities.User;
 import com.mongodb.MongoServerException;
 import com.mongodb.client.MongoCollection;

@@ -265,9 +265,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" pref="438" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="txtComment" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="btnComentar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -281,10 +280,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="423" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtComment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnComentar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnComentar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -310,8 +306,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtComment">
-        </Component>
         <Component class="javax.swing.JButton" name="btnComentar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Comentar"/>

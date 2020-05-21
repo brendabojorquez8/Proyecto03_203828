@@ -7,12 +7,15 @@ package Frames;
 
 import Control.ControlComments;
 import Control.ControlPosts;
+import Control.ControlUsers;
 import Entities.Comment;
 import Entities.Post;
 import Entities.User;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -24,6 +27,7 @@ public class FrmPost extends javax.swing.JFrame {
     private Post post;
     private ControlPosts controlPost;
     private ControlComments controlComments;
+    private ControlUsers controlUser;
     
     /**
      * Creates new form Post
@@ -33,7 +37,13 @@ public class FrmPost extends javax.swing.JFrame {
         this.post=post;
         this.controlComments=new ControlComments();
         this.controlPost=new ControlPosts();
+        this.controlUser=new ControlUsers();
         initComponents();
+        lblComments.setText("Comentarios: "+post.getComments().size());
+        lblDate.setText(post.getDateHour().toString());
+        lblUser.setText(controlUser.findById(post.getUser()).getName());
+        txtPost.setText(post.getText());
+        lstComments.setListData(cargarComments());
     }
 
     /**
@@ -59,6 +69,8 @@ public class FrmPost extends javax.swing.JFrame {
         btnEliminarPost = new javax.swing.JButton();
         btnEliminarComentario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        txtComment = new javax.swing.JTextField();
+        btnComentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,11 +130,23 @@ public class FrmPost extends javax.swing.JFrame {
         lblComments.setText("jLabel1");
 
         lstComments.setModel(new DefaultComboBoxModel<Comment>(this.cargarComments()));
+        lstComments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstComments.setToolTipText("");
         pnlComments.setViewportView(lstComments);
 
         btnEliminarPost.setText("Eliminar Post");
+        btnEliminarPost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPostActionPerformed(evt);
+            }
+        });
 
         btnEliminarComentario.setText("Eliminar comentario");
+        btnEliminarComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarComentarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,23 +181,40 @@ public class FrmPost extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblComments)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlComments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlComments, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarComentario)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnComentar.setText("Comentar");
+        btnComentar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComentarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnComentar)
+                    .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnComentar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,7 +231,7 @@ public class FrmPost extends javax.swing.JFrame {
                 .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -216,13 +257,49 @@ public class FrmPost extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblInicioMouseClicked
 
+    private void btnComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentarActionPerformed
+        Comment com = new Comment(new ObjectId(), txtComment.getText(), new Date(), user.getId());
+        post.addComment(com);
+        controlPost.update(post);
+        txtComment.setText("");
+        lblComments.setText("Comentarios: "+post.getComments().size());
+        lstComments.setListData(cargarComments());
+    }//GEN-LAST:event_btnComentarActionPerformed
+
+    private void btnEliminarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarComentarioActionPerformed
+        int answer = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas eliminar este comentario?");
+        if (answer == 0) {
+            Comment comment = lstComments.getSelectedValue();
+            if (this.user.getId().equals(post.getUser())||this.user.getId().equals(comment.getUser())) {
+                post.removeComment(comment);
+                controlPost.update(post);
+                controlComments.remove(comment);
+                lstComments.setListData(cargarComments());
+                lblComments.setText("Comentarios: "+post.getComments().size());
+            } else {
+                JOptionPane.showMessageDialog(this, "No estás autorizado para eliminar este post");
+            }
+        }
+    }//GEN-LAST:event_btnEliminarComentarioActionPerformed
+
+    private void btnEliminarPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPostActionPerformed
+        int answer = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas eliminar este post?");
+        if (answer == 0) {
+            if (this.user.getId().equals(post.getUser())) {
+                controlPost.remove(post);
+            } else {
+                JOptionPane.showMessageDialog(this, "No estás autorizado para eliminar este post");
+            }
+            Principal p = new Principal(user);
+            p.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnEliminarPostActionPerformed
+
     private Comment[] cargarComments() {
-        List<Comment> comments = this.post.getComments();
+        List<Comment> comments = post.getComments();
         Comment[] array = new Comment[comments.size()];
         int i = 0;
-        if (comments.isEmpty()) {
-            return null;
-        }
         for (Comment comment : array) {
             array[i] = comment;
             i++;
@@ -231,6 +308,7 @@ public class FrmPost extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComentar;
     private javax.swing.JButton btnEliminarComentario;
     private javax.swing.JButton btnEliminarPost;
     private javax.swing.JPanel jPanel1;
@@ -244,6 +322,7 @@ public class FrmPost extends javax.swing.JFrame {
     private javax.swing.JList<Comment> lstComments;
     private javax.swing.JScrollPane pnlComments;
     private javax.swing.JPanel pnlMenu;
+    private javax.swing.JTextField txtComment;
     private javax.swing.JTextArea txtPost;
     // End of variables declaration//GEN-END:variables
 }

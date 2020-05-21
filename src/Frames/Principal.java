@@ -68,7 +68,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstPosts = new javax.swing.JList<>();
-        txtComment = new javax.swing.JTextField();
         btnComentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -222,8 +221,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtComment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnComentar)))
                 .addContainerGap())
         );
@@ -233,9 +231,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComentar))
+                .addComponent(btnComentar)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -278,14 +274,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPostActionPerformed
 
     private void btnComentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentarActionPerformed
-        
-        
-        Post post=lstPosts.getSelectedValue();
-        Comment com=new Comment(new ObjectId(), txtComment.getText(), new Date(), user.getId());
-        post.addComment(com);
-        controlPost.update(post);
-        txtComment.setText("");
-        lstPosts.setListData(cargarPosts());
+        FrmPost p=new FrmPost(user, lstPosts.getSelectedValue());
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnComentarActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -367,7 +358,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlPost;
     private javax.swing.JPanel pnlUser;
-    private javax.swing.JTextField txtComment;
     private javax.swing.JTextArea txtPost;
     // End of variables declaration//GEN-END:variables
 }
