@@ -6,7 +6,6 @@ import Enums.*;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,7 +24,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.controlUsuario = new ControlUsers();
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -75,8 +74,8 @@ public class Inicio extends javax.swing.JFrame {
         lb_confirm = new javax.swing.JLabel();
         lb_nombre = new javax.swing.JLabel();
         lb_DOB = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        pnlGif = new javax.swing.JPanel();
+        lblGif = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("¡Bienvenido!");
@@ -85,6 +84,7 @@ public class Inicio extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1125, 630));
         setMinimumSize(new java.awt.Dimension(1125, 630));
         setPreferredSize(new java.awt.Dimension(1125, 630));
+        setResizable(false);
 
         pnlLogIn.setBackground(new java.awt.Color(64, 103, 127));
 
@@ -340,28 +340,28 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMaximumSize(new java.awt.Dimension(400, 456));
-        jPanel4.setMinimumSize(new java.awt.Dimension(400, 456));
-        jPanel4.setPreferredSize(new java.awt.Dimension(400, 456));
+        pnlGif.setBackground(new java.awt.Color(255, 255, 255));
+        pnlGif.setMaximumSize(new java.awt.Dimension(400, 456));
+        pnlGif.setMinimumSize(new java.awt.Dimension(400, 456));
+        pnlGif.setPreferredSize(new java.awt.Dimension(400, 456));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Wink2.gif"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(400, 580));
-        jLabel2.setMinimumSize(new java.awt.Dimension(400, 580));
-        jLabel2.setPreferredSize(new java.awt.Dimension(400, 580));
+        lblGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Wink2.gif"))); // NOI18N
+        lblGif.setMaximumSize(new java.awt.Dimension(400, 580));
+        lblGif.setMinimumSize(new java.awt.Dimension(400, 580));
+        lblGif.setPreferredSize(new java.awt.Dimension(400, 580));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout pnlGifLayout = new javax.swing.GroupLayout(pnlGif);
+        pnlGif.setLayout(pnlGifLayout);
+        pnlGifLayout.setHorizontalGroup(
+            pnlGifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGifLayout.createSequentialGroup()
+                .addComponent(lblGif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlGifLayout.setVerticalGroup(
+            pnlGifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGifLayout.createSequentialGroup()
+                .addComponent(lblGif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -371,7 +371,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlGif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -382,7 +382,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(pnlLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                    .addComponent(pnlGif, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addComponent(pnlRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
@@ -408,19 +408,20 @@ public class Inicio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "No se pudo registrar al usuario", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
-            
+
             limpiarCampos();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        eliminarTodo();
+//        eliminarTodo();
         User us = controlUsuario.findByEmail(txtEmail.getText());
+        System.out.println(us);
         if (us != null) {
             if (us.getPassword().equals(txtPassword.getText())) {
-                //Abrir pantalla
-                //this.dispose();
-                JOptionPane.showMessageDialog(null,"Esto es otra pantalla c:");
+                Principal p=new Principal(us);
+                p.setVisible(true);
+                this.dispose();
             } else {
                 lb_pss.setText("Contraseña incorrecta");
                 lb_pss.setForeground(Color.yellow);
@@ -455,7 +456,7 @@ public class Inicio extends javax.swing.JFrame {
         List<User> users = controlUsuario.find();
         for (User user : users) {
             System.out.println(user);
-            controlUsuario.remove(user);
+//            controlUsuario.remove(user);
         }
     }
 
@@ -466,8 +467,8 @@ public class Inicio extends javax.swing.JFrame {
         txtPasswordRegister.setText("");
         labelWhite();
     }
-    
-    private void labelWhite(){
+
+    private void labelWhite() {
         lb_DOB.setForeground(Color.WHITE);
         lb_confirm.setForeground(Color.WHITE);
         lb_correo.setForeground(Color.WHITE);
@@ -584,8 +585,6 @@ public class Inicio extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser chsDOB;
     private javax.swing.JComboBox<Gender> cmbGender;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lb_DOB;
     private javax.swing.JLabel lb_confirm;
     private javax.swing.JLabel lb_correo;
@@ -597,12 +596,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblEmailRegister;
     private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblGif;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPasswordRegister;
     private javax.swing.JLabel lblRegistrar;
     private javax.swing.JList<MovieGenre> lstMovies;
     private javax.swing.JList<MusicalGenre> lstMusic;
+    private javax.swing.JPanel pnlGif;
     private javax.swing.JPanel pnlLogIn;
     private javax.swing.JScrollPane pnlMovies;
     private javax.swing.JScrollPane pnlMusic;

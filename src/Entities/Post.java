@@ -1,5 +1,6 @@
 package Entities;
 
+import Control.ControlUsers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,6 +66,10 @@ public class Post extends EntityBase {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+    
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
 
     public ObjectId getUser() {
         return user;
@@ -76,7 +81,8 @@ public class Post extends EntityBase {
 
     @Override
     public String toString() {
-        return "Post{" + "_id=" + this.getId() + ", dateHour=" + dateHour + ", text=" + text + ", tags=" + tags + ", comments=" + comments + ", user=" + user + '}';
+        ControlUsers us=new ControlUsers();
+        return us.findById(user).getName() + "\n " + text+"\n comentarios: "+comments.size();
     }
 
 }
