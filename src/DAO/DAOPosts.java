@@ -1,8 +1,10 @@
 package DAO;
 
 import Entities.Post;
+import Entities.User;
 import com.mongodb.MongoServerException;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,15 @@ public class DAOPosts extends DAOBase<Post> {
     public boolean remove(Post post) {
         try {
             this.posts.deleteOne(new Document("_id", post.getId()));
+            return true;
+        } catch (MongoServerException ex) {
+            return false;
+        }
+    }
+    
+    public boolean removeByUser(User user) {
+        try {
+            this.posts.deleteMany(Filters.eq("user",user.getId()));
             return true;
         } catch (MongoServerException ex) {
             return false;

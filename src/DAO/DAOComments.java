@@ -1,8 +1,10 @@
 package DAO;
 
 import Entities.Comment;
+import Entities.User;
 import com.mongodb.MongoServerException;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,15 @@ public class DAOComments extends DAOBase<Comment> {
     public boolean remove(Comment comment) {
         try {
             this.comments.deleteOne(new Document("_id", comment.getId()));
+            return true;
+        } catch (MongoServerException ex) {
+            return false;
+        }
+    }
+    
+     public boolean removeByUser(User user) {
+        try {
+            this.comments.deleteMany(Filters.eq("user",user.getId()));
             return true;
         } catch (MongoServerException ex) {
             return false;

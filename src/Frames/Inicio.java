@@ -307,9 +307,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(lb_correo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPasswordRegister)
-                            .addComponent(txtPasswordRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPasswordRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPasswordRegister))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb_password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -346,22 +346,19 @@ public class Inicio extends javax.swing.JFrame {
         pnlGif.setPreferredSize(new java.awt.Dimension(400, 456));
 
         lblGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Wink2.gif"))); // NOI18N
-        lblGif.setMaximumSize(new java.awt.Dimension(400, 580));
-        lblGif.setMinimumSize(new java.awt.Dimension(400, 580));
-        lblGif.setPreferredSize(new java.awt.Dimension(400, 580));
 
         javax.swing.GroupLayout pnlGifLayout = new javax.swing.GroupLayout(pnlGif);
         pnlGif.setLayout(pnlGifLayout);
         pnlGifLayout.setHorizontalGroup(
             pnlGifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGifLayout.createSequentialGroup()
-                .addComponent(lblGif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblGif)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlGifLayout.setVerticalGroup(
             pnlGifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGifLayout.createSequentialGroup()
-                .addComponent(lblGif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblGif)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

@@ -2,6 +2,7 @@ package Control;
 
 import DAO.DAOPosts;
 import Entities.Post;
+import Entities.User;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -46,6 +47,10 @@ public class ControlPosts implements ControlBase<Post> {
         return this.post.remove(post);
     }
 
+    public boolean removeByUser(User user){
+        return this.post.removeByUser(user);
+    }
+    
     @Override
     public boolean addElement(Post post, Object obj, String edit) {
         return this.post.addElement(post, obj, edit);

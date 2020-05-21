@@ -2,6 +2,7 @@ package Control;
 
 import DAO.DAOComments;
 import Entities.Comment;
+import Entities.User;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -41,6 +42,10 @@ public class ControlComments implements ControlBase<Comment> {
     @Override
     public boolean remove(Comment comment) {
         return this.comment.remove(comment);
+    }
+    
+    public boolean removeByUser(User user){
+        return this.comment.removeByUser(user);
     }
 
     @Override

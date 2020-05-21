@@ -54,6 +54,8 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlMenu = new javax.swing.JPanel();
+        lblLogOut = new javax.swing.JLabel();
+        lblSetup = new javax.swing.JLabel();
         pnlUser = new javax.swing.JPanel();
         lblRobot = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
@@ -62,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPost = new javax.swing.JTextArea();
         btnPost = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstPosts = new javax.swing.JList<>();
@@ -74,15 +77,41 @@ public class Principal extends javax.swing.JFrame {
 
         pnlMenu.setBackground(new java.awt.Color(64, 103, 127));
 
+        lblLogOut.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogOut.setText("LOGOUT");
+        lblLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogOutMouseClicked(evt);
+            }
+        });
+
+        lblSetup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/setup.png"))); // NOI18N
+        lblSetup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSetupMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLogOut)
+                .addGap(18, 18, 18)
+                .addComponent(lblSetup)
+                .addContainerGap())
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
+            .addGroup(pnlMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblSetup)
+                    .addComponent(lblLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlUser.setBackground(new java.awt.Color(255, 255, 255));
@@ -108,6 +137,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setText("Borrar");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlPostLayout = new javax.swing.GroupLayout(pnlPost);
         pnlPost.setLayout(pnlPostLayout);
         pnlPostLayout.setHorizontalGroup(
@@ -120,7 +156,8 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(pnlPostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnPost)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPostLayout.setVerticalGroup(
@@ -132,7 +169,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPost)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDelete)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
@@ -197,7 +236,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnComentar))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,6 +286,31 @@ public class Principal extends javax.swing.JFrame {
         lstPosts.setListData(cargarPosts());
     }//GEN-LAST:event_btnComentarActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        Post post = lstPosts.getSelectedValue();
+        if (this.user.getId().equals(post.getUser())) {
+            controlPost.remove(post);
+            lstPosts.setListData(cargarPosts());
+        } else{
+            JOptionPane.showMessageDialog(this, "No estás autorizado para eliminar este post");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void lblLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogOutMouseClicked
+        int answer=JOptionPane.showConfirmDialog(this, "¿Seguro que deseas salir?");
+        if(answer==0){
+            Inicio i=new Inicio();
+            i.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_lblLogOutMouseClicked
+
+    private void lblSetupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSetupMouseClicked
+        Setup s=new Setup(user);
+        s.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblSetupMouseClicked
+
     private Post[] cargarPosts(){
         List<Post> posts=controlPost.find();
         Post[] array=new Post[posts.size()];
@@ -288,13 +352,16 @@ public class Principal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnComentar;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnPost;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblLogOut;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPost;
     private javax.swing.JLabel lblRobot;
+    private javax.swing.JLabel lblSetup;
     private javax.swing.JList<Post> lstPosts;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlPost;
